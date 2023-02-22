@@ -1,0 +1,42 @@
+If we create a class and if any method present inside that class, then if any type of checked exception occur, then we can't throws that exception to JVM.
+We have to handle that exception using try-catch block.
+
+Let's see by this example:-
+
+class mano1
+{
+ void go()
+  {
+   FileReader mano=new FileReader(".\\file30.txt");
+  }
+}
+
+In this class (mano1), there is a method named go(). And in this method, there
+is a FileReader class, which throw FileNotFoundException.
+
+To handle this exception, we can't write like this:-
+
+class mano1
+{
+  void go() throws FileNotFoundException // this is wrong method
+  {
+    FileReader mano=new FileReader(".\\file30.txt");
+  }
+}
+
+To handle this exception, we can only write like this :-
+
+class mano1
+{
+  void go()
+   {
+      try
+       {
+         FileReader mano=new FileReader(".\\file30.txt");
+       }
+       catch(FileNotFoundException e)
+       {
+           //any codes you want to write
+       }
+    }
+}

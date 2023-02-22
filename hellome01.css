@@ -1,0 +1,38 @@
+body{
+    background-color:lightslategrey;
+}
+
+ul{
+    background-color:lightseagreen;
+    padding:20px;
+    margin:15px;
+}
+.div1{
+    background-color:#222;
+    flex-direction:column;
+    display:flex;
+    align-items:flex-end;
+}
+.child-div{
+    background-color:pink;
+    padding:20px;
+    margin:10px;
+}
+
+.div2{
+    background-color:#222;
+    flex-direction:column;
+    display:flex;
+    margin:20px;
+    align-items:flex-end;
+    height:350px;
+}
+
+#thisdiv{
+    border:1px solid blue;
+    background-color:black;
+    position:absolute;
+    right:700px;
+    height:200px;
+    width:200px;
+}

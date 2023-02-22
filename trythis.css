@@ -1,0 +1,40 @@
+body{
+    background-color:#00919c;
+}
+#div1{
+    background-color:black;
+    border-radius:10px;
+    width:70%;
+    display:flex;
+    justify-content:center;
+    color:white;
+    }
+#div2{
+   height:10%;
+background-color:red;
+}
+button{
+   display:inline-block;
+}
+
+ pre{
+    background-color:#222;
+    border-radius:10px;
+    border:1px solid blue;
+   /* box-shadow:3px 3px 5px #00919c inset;*/
+    font-size:21px;
+    box-shadow:5px 5px 5px blue;
+    width:90%;
+    display:flex;
+    justify-content:center;
+ }
+ b{
+    color:blue;
+ }
+ b:hover{
+    color:red;
+ }
+ p{
+   background-color: #222;
+   width:80%;
+ }

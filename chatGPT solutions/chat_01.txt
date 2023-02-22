@@ -1,0 +1,115 @@
+baskeymanoranjan400@gmail.com
+import java.lang.Thread;
+import java.lang.Runnable;
+import java.util.Scanner;
+import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileWriter;
+
+class class2 implements Runnable  throws IOException
+{
+    void getgo() throws IOException, FileNotFoundException
+    {
+        System.out.println("heii");
+       FileWriter gofile=new FileWriter(".\\file14.txt");
+       gofile.write("this is the gofile");
+       gofile.flush();
+    }
+    public void run() 
+    {
+        getgo();
+    }
+
+}
+class class1 implements Runnable
+{
+  void sum()
+  {
+    Scanner hello1=new Scanner(System.in);
+    System.out.println("enter any two number");
+    int a=hello1.nextInt();
+    int b=hello1.nextInt();
+    int c=a+b;
+    System.out.println("sum="+c);
+  }
+ public void run()
+ {
+    sum();
+ }
+}
+
+public class filehand_41
+{
+    public static void main(String []args)
+    {
+        class1 mano1=new class1();
+        Thread t=new Thread(mano1);
+        t.start();
+        class2 mano2=new class2();
+        Thread t2=new Thread(mano2);
+        t2.start();
+    }
+}
+
+what is wrong in this code?
+This code is trying to create two threads, one that runs the sum() method from class1 and one that runs the getgo() method from class2.
+
+There is a IOException and FileNotFoundException that is not handled in the getgo() method of class2 and also in the run() method of class2.
+
+You should add try-catch blocks to handle these exceptions or throw these exceptions in the run method of class2.
+
+Also, the class2 implements Runnable, but it throws IOException in the class signature, this is not allowed in Java. You should either remove the throws IOException or add the try-catch blocks inside the run method or the getgo method.
+
+You also may want to close the FileWriter in the getgo method using the close() method of the FileWriter after the flush().
+
+
+
+
+baskeymanoranjan400@gmail.com
+show me how to handle these all exception?
+You have a couple of options for handling the exceptions in this code:
+
+You can add try-catch blocks inside the getgo() method to handle the IOException and FileNotFoundException. For example:
+Copy code
+    void getgo() {
+        System.out.println("heii");
+        try {
+            FileWriter gofile = new FileWriter(".\\file14.txt");
+            gofile.write("this is the gofile");
+            gofile.flush();
+            gofile.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+You can add a try-catch block inside the run() method of class2 to handle the exception. For example:
+Copy code
+    public void run() {
+        try {
+            getgo();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+You can throw the IOException in the run() method of class2 and catch it in the main method of filehand_41. For example:
+Copy code
+    public void run() throws IOException {
+        getgo();
+    }
+Copy code
+public static void main(String []args) {
+        class1 mano1=new class1();
+        Thread t=new Thread(mano1);
+        t.start();
+        class2 mano2=new class2();
+        Thread t2=new Thread(mano2);
+        try {
+            t2.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+You should also remove the throws IOException from the class2 since it's not allowed in java.
+
+You can use any of the above methods or a combination of them to handle the exceptions in your code.
